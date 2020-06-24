@@ -1,3 +1,7 @@
 .initialContainer {
   background-image: url(/assets/images/background.jpg);
 }
+
+.whiteBack {
+  background-color: rgba(245, 245, 245, 0.904);
+}

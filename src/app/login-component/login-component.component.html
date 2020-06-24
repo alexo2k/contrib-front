@@ -1,0 +1,15 @@
+<div class="topTab" fxLayout="column" fxLayoutAlign="center center">
+  <div>
+    <span class="mat-h2">Introduce la clave de acceso</span>
+  </div>
+  <div>
+    <form [formGroup]="signin">
+      <mat-form-field appearance="outline" color="primary" class="topTab">
+        <mat-label>Clave de acceso</mat-label>
+        <input type="text" matInput placeholder="Ingresa la clave" style="font-size: 25px;" formControlName="claveAcceso">
+      </mat-form-field>
+      <div nbRecaptcha key="public key" formControlName="captcha"></div>
+      <button mat-raised-button color="primary" class="topTab" style="width: 300px; height: 60px">Ingresar</button>
+    </form>
+  </div>
+</div>

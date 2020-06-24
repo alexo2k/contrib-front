@@ -11,13 +11,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
 import { AppContribFooterComponent } from './app-contrib-footer/app-contrib-footer.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContribHeaderComponent,
     AppContribFooterComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    LoginComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -12,4 +12,8 @@ export class ContribHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToHome(): void {
+    window.location.href = 'http://www.sntsepomex.org';
+  }
+
 }

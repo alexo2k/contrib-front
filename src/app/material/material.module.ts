@@ -12,7 +12,7 @@ const material = [
   MatIconModule,
   MatGridListModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-welcome-page',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+  goToHome(): void {
+    window.location.href = 'http://www.sntsepomex.org';
+  }
+
+  goToRequestPass(): void {
+    window.location.href = 'http://sntsepomex.org/web/SECRETARIAS/sistemas.html';
   }
 
 }
