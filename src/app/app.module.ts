@@ -11,7 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
 import { AppContribFooterComponent } from './app-contrib-footer/app-contrib-footer.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { LoginComponentComponent } from './login-component/login-component.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { LoginComponentComponent } from './login-component/login-component.compo
     ContribHeaderComponent,
     AppContribFooterComponent,
     WelcomePageComponent,
-    LoginComponentComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

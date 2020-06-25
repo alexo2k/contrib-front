@@ -1,0 +1,23 @@
+<div class="topTab" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card>
+    <div class="topTab" fxLayout="row" fxLayoutAlign="center center">
+      <span class="mat-h2">Introduce la clave de Acceso</span>
+    </div>
+    <form [formGroup]="signin">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field appearance="outline">
+          <mat-label>Clave de Acceso</mat-label>
+          <input matInput placeholder="Ingresa la clave" formControlName = "claveAcceso">
+          <mat-icon matSuffix>https</mat-icon>
+          <mat-error *ngIf="signin.get('claveAcceso').hasError('required') && signin.get('claveAcceso').touched">Es necesario que introduzcas la clave.</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div #recaptcha></div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button [disabled]="signin.invalid" mat-raised-button color="primary" class="topTab" style="width: 300px; height: 60px">Ingresar</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
