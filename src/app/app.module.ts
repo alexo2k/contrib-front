@@ -12,6 +12,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { AppContribFooterComponent } from './app-contrib-footer/app-contrib-footer.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { LoginComponent } from './login/login.component';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,10 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatMenuModule
+    MatMenuModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

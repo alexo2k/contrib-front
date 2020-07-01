@@ -5,18 +5,18 @@
     </div>
     <form [formGroup]="signin">
       <div fxLayout="row" fxLayoutAlign="center center">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" color="primary">
           <mat-label>Clave de Acceso</mat-label>
-          <input matInput placeholder="Ingresa la clave" formControlName = "claveAcceso">
+          <input type="password" matInput placeholder="Ingresa la clave" formControlName = "claveAcceso" autocomplete="false">
           <mat-icon matSuffix>https</mat-icon>
-          <mat-error *ngIf="signin.get('claveAcceso').hasError('required') && signin.get('claveAcceso').touched">Es necesario que introduzcas la clave.</mat-error>
+          <mat-error *ngIf="signin.get('claveAcceso').hasError('required') && signin.get('claveAcceso').touched">Es necesario que introduzcas tu clave.</mat-error>
         </mat-form-field>
       </div>
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <div #recaptcha></div>
+      <div fxLayout fxLayout="row" fxLayoutAlign="center center">
+        <re-captcha formControlName="recaptcha" (resolved)="resolved($event)" siteKey="6LclvqgZAAAAAIvCtdcccZbKAvyKZR2bRJKvP7Ja"></re-captcha>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center">
-        <button [disabled]="signin.invalid" mat-raised-button color="primary" class="topTab" style="width: 300px; height: 60px">Ingresar</button>
+        <button [disabled]="signin.invalid || !captchaResolved" mat-raised-button color="primary" class="topTab" style="width: 300px; height: 60px">Ingresar</button>
       </div>
     </form>
   </mat-card>
