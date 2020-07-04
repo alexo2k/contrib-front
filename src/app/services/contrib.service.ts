@@ -26,4 +26,9 @@ export class ContribService {
     return this.http.post<RecaptchaResponse>(this.SERVER_URL + 'login/captchaValidate', tokenObj, {headers: {'Content-Type': 'application/json'}});
   }
 
+  validateAccessKey(claveAcceso: string) {
+    const parameter = JSON.stringify({ passuser: claveAcceso });
+    return this.http.post(this.SERVER_URL + 'login/acceso', parameter , {headers: {'Content-Type': 'application/json'}});
+  }
+
 }
