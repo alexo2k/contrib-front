@@ -5,6 +5,9 @@ import { RecaptchaResponse } from '../models/recaptcha-response.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrordialogComponent } from './../dialogs/errordialog/errordialog.component';
+import { empleado } from '../models/empleado.model';
+import { LoginReponse } from '../models/login-reponse.model';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +20,9 @@ export class LoginComponent implements OnInit {
 
   captchaResolved;
   signin: FormGroup;
+  loginResponse: LoginReponse;
 
-  constructor(private contriServ: ContribService, public dialog: MatDialog) {
+  constructor(private contriServ: ContribService, public dialog: MatDialog, private router: Router) {
 
    }
 
@@ -26,7 +30,8 @@ export class LoginComponent implements OnInit {
     // this.captchaResolved = false;
     this.captchaResolved = true;
     this.signin = new FormGroup({
-      claveAcceso: new FormControl(null, Validators.required)
+      claveAcceso: new FormControl(null, Validators.required),
+      captchaToggle: new FormControl(null, Validators.requiredTrue)
     });
 
   }
@@ -47,17 +52,31 @@ export class LoginComponent implements OnInit {
   if(this.signin.invalid) {
     console.log('no valido');
   } else {
-    // tslint:disable-next-line: no-string-literal
-    // console.log(this.signin.controls['claveAcceso'].value);
-    // console.log(this.signin.value);
     const claveAcceso = this.signin.controls['claveAcceso'].value.trim();
-    this.contriServ.validateAccessKey(claveAcceso).subscribe((data: any) => {
-      console.log(data.empleado);
+    this.contriServ.validateAccessKey(claveAcceso).subscribe((data: LoginReponse) => {
+      this.loginResponse = data;
+      if (data.status === 'success') {
+          console.log(this.loginResponse);
+          sessionStorage.setItem('empleado', JSON.stringify(data.empleado));
+          sessionStorage.setItem('token', JSON.stringify(data.token));
+          sessionStorage.setItem('estadoDocBox', JSON.stringify(data.estadoDocBox));
+          sessionStorage.setItem('empleadoDocBoxId', JSON.stringify(data.empleadoDocBoxId));
+
+          this.router.navigate(['/userHome']);
+        } else {
+          this.dialog.open(ErrordialogComponent);
+          this.signin.reset();
+        }
     }, (error: HttpErrorResponse) => {
-      // console.log("Ocurrio un error: " + error.error.message);
+      console.log('Ocurrio un error: ' + error.error.message);
       this.dialog.open(ErrordialogComponent);
+      this.signin.reset();
     });
   }
+ }
+
+ goToAvisoPrivacidad() {
+  window.location.href = 'http://www.sntsepomex.org/aportaciones/declaracionprivacidad.html';
  }
 
 }

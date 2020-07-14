@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrordialogComponent } from './dialogs/errordialog/errordialog.component';
+import { ContribSideNavComponent } from './contrib-side-nav/contrib-side-nav.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ErrordialogComponent } from './dialogs/errordialog/errordialog.componen
     AppContribFooterComponent,
     WelcomePageComponent,
     LoginComponent,
-    ErrordialogComponent
+    ErrordialogComponent,
+    ContribSideNavComponent
   ],
   imports: [
     BrowserModule,

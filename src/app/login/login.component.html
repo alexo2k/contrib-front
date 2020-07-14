@@ -12,7 +12,13 @@
           <mat-error *ngIf="signin.get('claveAcceso').hasError('required') && signin.get('claveAcceso').touched">Es necesario que introduzcas tu clave.</mat-error>
         </mat-form-field>
       </div>
-      <div fxLayout fxLayout="row" fxLayoutAlign="center center">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-slide-toggle color="primary" formControlName="captchaToggle">Acepto los términos del aviso de privacidad</mat-slide-toggle>
+      </div>
+      <div class="topTab" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button (click) = "goToAvisoPrivacidad()">Aviso de privacidad</button>
+      </div>
+      <div class="topTab" fxLayout fxLayout="row" fxLayoutAlign="center center">
         <re-captcha (resolved)="resolved($event)" siteKey="6LclvqgZAAAAAIvCtdcccZbKAvyKZR2bRJKvP7Ja"></re-captcha>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center">
@@ -20,4 +26,9 @@
       </div>
     </form>
   </mat-card>
+  <div class="topTab">
+    <mat-card [style.backgroundColor]="'#42aaf5'">
+      <p class="mat-body-2">En este portal se muestran el saldo actual, en caso de requerir el estado de cuenta solicitalo al área pertinente.</p>
+    </mat-card>
+  </div>
 </div>
